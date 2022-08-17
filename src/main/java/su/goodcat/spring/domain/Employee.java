@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 
-public class Employee {
+public class Employee extends Human{
 
     @Id
     private long id;

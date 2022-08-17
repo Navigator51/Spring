@@ -15,4 +15,17 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         <sqlFile path="document-001/002_create_table_employee.sql" relativeToChangelogFile="true"/>
         <rollback/>
     </changeSet>
+
+    <changeSet id="3" author="e.markov">
+        <sqlFile path="document-002/001_create_table_client.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
+    <changeSet id="4" author="e.markov">
+        <sqlFile path="document-002/002_change_table_employee.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
+    <changeSet id="5" author="e.markov">
+        <sqlFile path="document-003/001-create_table_human.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
 </databaseChangeLog>
