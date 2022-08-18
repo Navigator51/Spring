@@ -28,4 +28,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         <sqlFile path="document-003/001-create_table_human.sql" relativeToChangelogFile="true"/>
         <rollback/>
     </changeSet>
+    <changeSet id="6" author="e.markov">
+        <sqlFile path="document-003/002-change_table_client.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
 </databaseChangeLog>
