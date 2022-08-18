@@ -18,7 +18,7 @@ public class Client extends Human {
     @Embedded
     private Money money;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = EnumConverter.class, disableConversion = true)
     @Type(type = "postgresEnum")
     private Gender gender;
 
