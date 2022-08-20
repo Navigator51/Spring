@@ -32,4 +32,16 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         <sqlFile path="document-003/002-change_table_client.sql" relativeToChangelogFile="true"/>
         <rollback/>
     </changeSet>
+    <changeSet id="7" author="e.markov">
+        <sqlFile path="document-004/001-change_table_human.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
+    <changeSet id="8" author="e.markov">
+        <sqlFile path="document-004/002-create_table_order_list.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
+    <changeSet id="9" author="e.markov">
+        <sqlFile path="document-004/003-create_table_client_goods.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
 </databaseChangeLog>

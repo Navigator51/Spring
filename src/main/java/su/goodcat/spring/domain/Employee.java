@@ -12,8 +12,7 @@ import javax.persistence.*;
 
 public class Employee extends Human{
 
-    @Id
-    private long id;
+
 
     @ManyToOne
     private Department department;
