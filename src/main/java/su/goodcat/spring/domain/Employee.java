@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 //@IdClass(su.goodcat.spring.domain.IdClass.class)
+@Table(schema = "plan")
+@PrimaryKeyJoinColumn(name = "human_id")
 
 public class Employee extends Human{
 

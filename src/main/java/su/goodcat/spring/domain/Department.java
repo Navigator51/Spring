@@ -1,15 +1,18 @@
 package su.goodcat.spring.domain;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Access(AccessType.FIELD)
+@Table(schema = "plan")
 
 public class Department {
 

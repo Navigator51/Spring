@@ -13,6 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class)
+@Table(schema = "plan")
+@PrimaryKeyJoinColumn(name = "human_id")
 public class Client extends Human {
 
 

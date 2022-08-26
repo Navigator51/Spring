@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(schema = "plan")
 public class Human {
 
     @Id

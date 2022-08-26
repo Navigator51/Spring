@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter
-public class  EnumConverter implements AttributeConverter<Gender, String> {
+public class EnumConverter implements AttributeConverter<Gender, String> {
 
 
     @Override
