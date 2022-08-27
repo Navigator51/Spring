@@ -1,5 +1,6 @@
 package su.goodcat.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,9 +20,12 @@ public class Employee extends Human{
 
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chief_id")
+    @JsonIgnore
     private Employee chief;
 
     @Column(nullable = false)
