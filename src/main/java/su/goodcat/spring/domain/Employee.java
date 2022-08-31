@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 //import javax.persistence.IdClass;
-
-
 @Entity
 @Getter
 @Setter
@@ -14,10 +12,7 @@ import javax.persistence.*;
 //@IdClass(su.goodcat.spring.domain.IdClass.class)
 @Table(schema = "plan")
 @PrimaryKeyJoinColumn(name = "human_id")
-
-public class Employee extends Human{
-
-
+public class Employee extends Human {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -32,6 +27,7 @@ public class Employee extends Human{
     private String name;
 
     private long salary;
+
     @Transient // указывает, что это поле не вносится в базу данных
     private String temporary;
 
