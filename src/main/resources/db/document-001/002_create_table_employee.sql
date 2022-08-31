@@ -5,10 +5,10 @@ create table if not exists plan.employee
         constraint employee_pk
             primary key,
     department_id bigint      not null        constraint employee_department_id_fk
-            references department,
+            references plan.department,
     chief_id      bigint
         constraint employee_employee_id_fk
-            references employee,
+            references plan.employee,
     name          varchar(30) not null,
     salary        integer
 );
