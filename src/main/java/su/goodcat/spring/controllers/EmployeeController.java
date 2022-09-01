@@ -1,5 +1,6 @@
 package su.goodcat.spring.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,9 +11,11 @@ import su.goodcat.spring.services.EmployeeService;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor //внедрение зависимостей для всех private Final полей через конструнстрор (Ломбок сахар)
 public class EmployeeController {
-    @Autowired
-    private EmployeeService employeeService;
+
+    private final EmployeeService employeeService;
+
 
     @GetMapping(path = "employee")
 
