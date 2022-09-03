@@ -15,7 +15,6 @@ import javax.persistence.*;
 public class Employee extends Human {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY)
