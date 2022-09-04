@@ -29,8 +29,8 @@ public class EmployeeController {
                                                         // В нашем случае <Void>. Такая возможность названа Алмазный Оператор
     }
 
-    @PutMapping(path = "employee/${employeeId}/update")
-    public ResponseEntity<Void> putEmployee(@RequestBody EmployeeDTO employee, @PathVariable("employeeId") Long id) {
+    @PutMapping(path = "employee/{id}/update")
+    public ResponseEntity<Void> putEmployee(@RequestBody EmployeeDTO employee, @PathVariable("id") Long id) {
         employeeService.updateEmployee(employee, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -1,9 +1,11 @@
 package su.goodcat.spring.domain;
 
+// класс для создания промежуточного объекта employee, хранящего сведения о полях, полученных из JSON с фронта, которые
+// необходимо изменить в базе данных на хранимом там объекте.
 import lombok.Value;
-
 import java.time.LocalDate;
-@Value
+
+@Value  // аннотация, содержащая в себе много других, и объявляющая все поля класса private final !!!
 public class EmployeeDTO {
 
     LocalDate birthday;
