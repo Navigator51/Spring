@@ -1,7 +1,9 @@
 package su.goodcat.spring.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 @Service
+@Slf4j
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -43,6 +46,16 @@ public class EmployeeService {
         Employee a = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id)); // eсли объекта с заданным id
         // в базе не существует, выбрасываем исключение, прописанное в нашем классе исключений
         Mappers.getMapper(EmployeeMapper.class).fromDtoToEmployee(employee, a); // перекладываем значения из DTO через маппер
+
+    }
+    @Transactional
+    public void deleteEmployeeById(Long id) {
+        try {
+            employeeRepository.deleteById(id);
+        }catch (EmptyResultDataAccessException ex) {
+            log.error("Этого до тебя удалили!");
+            throw new EmployeeNotFoundException(id);
+        }
 
     }
 }

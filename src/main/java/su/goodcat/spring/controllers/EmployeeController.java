@@ -1,7 +1,7 @@
 package su.goodcat.spring.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +10,12 @@ import su.goodcat.spring.domain.EmployeeDTO;
 import su.goodcat.spring.services.EmployeeService;
 import java.util.List;
 
+import static su.goodcat.spring.constants.DebugMessagesConstants.GET_EMPLOYEE_FINISH;
+import static su.goodcat.spring.constants.DebugMessagesConstants.GET_EMPLOYEE_START;
+
 @RestController//отличается от контроллера тем, что отдаёт JSON, а не готовую HTML страницу
 @RequiredArgsConstructor //внедрение зависимостей для всех private final полей через конструнстрор (Ломбок сахар)
+@Slf4j
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -19,7 +23,10 @@ public class EmployeeController {
 
     @GetMapping(path = "employee")
     public ResponseEntity<List<Employee>> getEmployeeListByName(@RequestParam String name) {
-        return ResponseEntity.ok(employeeService.getEmployeeListByName(name));
+        log.debug(GET_EMPLOYEE_START,name);
+        ResponseEntity<List<Employee>> result = ResponseEntity.ok(employeeService.getEmployeeListByName(name));
+        log.debug(GET_EMPLOYEE_FINISH, name);
+        return result;
     }
 
     @PostMapping(path = "employee/save")
@@ -33,6 +40,12 @@ public class EmployeeController {
     public ResponseEntity<Void> putEmployee(@RequestBody EmployeeDTO employee, @PathVariable("id") Long id) {
         employeeService.updateEmployee(employee, id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "employee/{id}/delete")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Long id) {
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.ok().build();
     }
 
 }

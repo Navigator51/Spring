@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ import java.util.List;
 @Access(AccessType.FIELD)
 @Table(schema = "plan")
 
-public class Department {
+public class Department implements Serializable {
 
     // @GeneratedValue(strategy = GenerationType.SEQUENCE) - выбирает стратегию автогенерации id
     @Id
