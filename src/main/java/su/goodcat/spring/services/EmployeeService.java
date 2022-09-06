@@ -4,18 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import su.goodcat.spring.domain.Employee;
-import su.goodcat.spring.domain.EmployeeDTO;
+import su.goodcat.spring.domain.lerndomain.Employee;
+import su.goodcat.spring.domain.lerndomain.EmployeeDTO;
 import su.goodcat.spring.exceptions.EmployeeNotFoundException;
 import su.goodcat.spring.mapper.EmployeeMapper;
 import su.goodcat.spring.repositories.EmployeeRepository;
-
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+
 
 @Service
 @Slf4j

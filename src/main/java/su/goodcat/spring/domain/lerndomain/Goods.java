@@ -1,4 +1,4 @@
-package su.goodcat.spring.domain;
+package su.goodcat.spring.domain.lerndomain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

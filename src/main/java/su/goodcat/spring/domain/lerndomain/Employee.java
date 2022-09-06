@@ -1,4 +1,4 @@
-package su.goodcat.spring.domain;
+package su.goodcat.spring.domain.lerndomain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-//@IdClass(su.goodcat.spring.domain.IdClass.class)
+//@IdClass(su.goodcat.spring.domain.lerndomain.IdClass.class)
 @Table(schema = "plan")
 @PrimaryKeyJoinColumn(name = "human_id")
 public class Employee extends Human {
@@ -25,7 +25,7 @@ public class Employee extends Human {
     @Column(nullable = false)
     private String name;
 
-    private long salary;
+    private int salary;
 
     @Transient // указывает, что это поле не вносится в базу данных
     private String temporary;

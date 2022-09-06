@@ -1,4 +1,4 @@
-package su.goodcat.spring.domain;
+package su.goodcat.spring.domain.lerndomain;
 
 // класс для создания промежуточного объекта employee, хранящего сведения о полях, полученных из JSON с фронта, которые
 // необходимо изменить в базе данных на хранимом там объекте.

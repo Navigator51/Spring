@@ -1,4 +1,4 @@
-package su.goodcat.spring.domain;
+package su.goodcat.spring.domain.lerndomain;
 /*  класс создан для создания составного ключа primary key для какой-нибудь таблице в базе данных
 * например, ключом может быть связка колонок  ИНН/КПП */
 

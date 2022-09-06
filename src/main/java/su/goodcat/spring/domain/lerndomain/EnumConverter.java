@@ -1,4 +1,4 @@
-package su.goodcat.spring.domain;
+package su.goodcat.spring.domain.lerndomain;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

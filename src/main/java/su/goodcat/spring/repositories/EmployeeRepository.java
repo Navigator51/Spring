@@ -3,7 +3,7 @@ package su.goodcat.spring.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import su.goodcat.spring.domain.Employee;
+import su.goodcat.spring.domain.lerndomain.Employee;
 
 import java.util.List;
 
