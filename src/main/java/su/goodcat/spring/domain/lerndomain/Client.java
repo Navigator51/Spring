@@ -41,7 +41,7 @@ public class Client extends Human {
     private List<String> orderList;
 
     @ManyToMany
-    @JoinTable(name = "client_goods", joinColumns = @JoinColumn(name = "client_id"),
+    @JoinTable(schema = "plan", name = "client_goods", joinColumns = @JoinColumn(name = "client_id"),
                inverseJoinColumns = @JoinColumn(name = "goods_id"))
     private List<Goods> goodsList;
 }
