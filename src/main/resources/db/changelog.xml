@@ -52,4 +52,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         <sqlFile path="002/001-create_document_and_file_tables.sql" relativeToChangelogFile="true"/>
         <rollback/>
     </changeSet>
+    <changeSet id="12" author="e.markov">
+        <sqlFile path="003/001-create_role_and_alter_user.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
 </databaseChangeLog>
