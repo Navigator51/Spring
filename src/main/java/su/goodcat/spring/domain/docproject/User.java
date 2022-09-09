@@ -1,9 +1,10 @@
 package su.goodcat.spring.domain.docproject;
 
-
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -11,16 +12,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import su.goodcat.spring.domain.lerndomain.Gender;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(schema = "plan")
 @TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class) // создание типа данных для базы
