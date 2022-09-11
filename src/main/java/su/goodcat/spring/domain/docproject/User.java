@@ -11,6 +11,7 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import su.goodcat.spring.domain.lerndomain.Gender;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -73,6 +74,11 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) { // cпециальный сеттер для поля пароль,
+        // который запишет в базу пароль в зашифрованном виде
+       this.password =  new BCryptPasswordEncoder().encode(password);
     }
 
     @Override
