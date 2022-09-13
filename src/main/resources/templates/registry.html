@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="../static/css/login.css" rel="stylesheet" th:href="@{css/login.css}">
+</head>
+<body>
+<main>
+    <form class="entrance_form container" th:method="post" th:action="@{/registry}">
+        <h1 class="h1 mb-3 fw-normal">
+            Пожалуйста, зарегистрируйтесь!
+        </h1>
+        <div class="form-floating row">
+            <input class="form-control" name="username" type="text" id="user_name" placeholder="логин" autofocus>
+            <label for="user_name" class="sr-only">
+                Введите Ваш логин
+            </label>
+        </div>
+        <br>
+        <div class="form-floating row">
+            <input class="form-control pass" name="password" type="text" id="password" placeholder="пароль">
+            <label for="password" class="sr-only">
+                Введите Ваш пароль. Мы не подглядываем))
+            </label>
+        </div>
+        <br>
+        <div class="form-floating row">
+            <input class="form-control pass" name="repeat-password" type="text" id="repeat-password" placeholder="пароль">
+            <label for="repeat-password" class="sr-only">
+                Повторите пароль
+            </label>
+        </div>
+        <br>
+        <button class="w-30 btn btn-primary"  type="submit" onclick="piu()">
+            Регистрация
+        </button>
+    </form>
+</main>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/static/js/registry-request.js" th:src="@{/js/registry-request.js}"></script>
+
+</body>
+</html>

@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -20,6 +22,8 @@ import su.goodcat.spring.services.UserDetailsServiceImpl;
 public class SpringSecurityConfig implements WebMvcConfigurer {
 
     private final UserDetailsServiceImpl userDetailsService;
+    private final PasswordEncoder passwordEncoder;
+    private final SuccessLoginHandler successLoginHandler;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -33,21 +37,24 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
         return httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/main").permitAll()
+                .antMatchers("/main", "/registry").permitAll()
                 .antMatchers("/admin/**", "/configuration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/full_access/**").access("hasAnyRole('ROLE_ADMIN','ROLE_SUPER_MEGA_GALAXY_ADMIN')")
                 .antMatchers("/**").authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
+                .successHandler(successLoginHandler)
                 .and().build();
     }
 
-    @Bean //подключаем кодирование паролей
-    public PasswordEncoder doCrypting() {
-        return new BCryptPasswordEncoder();
+
+
+    @Bean
+    public WebSecurityCustomizer kakUgodno() {
+        return web -> web.ignoring().antMatchers("/css/**", "/*.html", "/js/**");
     }
 
     @Autowired
     public void setUserDetailsService(AuthenticationManagerBuilder autMB) throws Exception {
-        autMB.userDetailsService(userDetailsService).passwordEncoder(doCrypting());
+        autMB.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 }
