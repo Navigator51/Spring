@@ -8,6 +8,5 @@ import su.goodcat.spring.domain.lerndomain.EmployeeDTO;
 @Mapper(config = MapstructConfig.class)      // проверяем поля на null, если null, то не перекладываем
 public interface EmployeeMapper {
 
-    @Mapping(source = "employeeDTO.name", target = "a.name")
-    void fromDtoToEmployee(EmployeeDTO employeeDTO, @MappingTarget Employee a);
+        void fromDtoToEmployee(EmployeeDTO employeeDTO, @MappingTarget Employee a);
 }

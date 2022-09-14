@@ -1,11 +1,11 @@
 function piu() {
-    let password = $("#password")[0];
-    let repeatPassword =$("#repeat-password")[0];
+    let pasword = $("#password")[0].value;
+    let repeatPassword =$("#repeat-password")[0].value;
     let body = {
-        login: $("#login")[0],
-        password: password
+        login: $("#user_name")[0].value,
+        password: pasword
     }
-    if(password === repeatPassword) {
+    if(pasword === repeatPassword) {
         $.post( {
             url: "/api/v1/registry/controller",
             contentType: 'application/json',

@@ -37,7 +37,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
         return httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/main", "/registry").permitAll()
+                .antMatchers("/main", "/registry", "/api/v1/registry/**").permitAll()
                 .antMatchers("/admin/**", "/configuration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/full_access/**").access("hasAnyRole('ROLE_ADMIN','ROLE_SUPER_MEGA_GALAXY_ADMIN')")
                 .antMatchers("/**").authenticated()
