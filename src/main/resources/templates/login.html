@@ -30,6 +30,12 @@
         <button class="w-30 btn btn-primary"  type="submit">
             ВОЙТИ
         </button>
+        <br>
+        <div th:if="${param.error}" class="alert alert-error row">
+        Пользователь с такой парой логин/пароль не найден.
+            <br>
+            Проверьте правильность ввода!
+        </div>
     </form>
 </main>
 </body>

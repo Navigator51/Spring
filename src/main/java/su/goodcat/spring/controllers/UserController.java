@@ -5,9 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import su.goodcat.spring.constants.DebugMessagesConstants;
 import su.goodcat.spring.domain.dto.UserDTO;
 import su.goodcat.spring.services.UserService;
@@ -15,6 +13,7 @@ import su.goodcat.spring.services.UserService;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping(method= {RequestMethod.POST, RequestMethod.PUT})
 public class UserController {
 
     private final UserService userService;

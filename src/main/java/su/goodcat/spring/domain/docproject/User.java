@@ -58,7 +58,8 @@ public class User implements UserDetails {
     private LocalDateTime modifyDateTime;
 
     @ManyToOne(fetch = FetchType.EAGER)
-     private Role role;
+     private Role role = Role.builder().id(1L).build();// запись в объект через builder
+
 
     @Column(nullable = false, unique = true)
     private String login;

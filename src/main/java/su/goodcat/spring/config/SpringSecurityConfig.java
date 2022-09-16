@@ -29,18 +29,20 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE");
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "");
     }
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.cors().and()
+        return httpSecurity
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/js/**", "/css/**").permitAll()
                 .antMatchers("/main", "/registry", "/api/v1/registry/**").permitAll()
                 .antMatchers("/admin/**", "/configuration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/full_access/**").access("hasAnyRole('ROLE_ADMIN','ROLE_SUPER_MEGA_GALAXY_ADMIN')")
-                .antMatchers("/**").authenticated()
+                .antMatchers("/").authenticated()
+                .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
                 .successHandler(successLoginHandler)
                 .and().build();

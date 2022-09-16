@@ -1,9 +1,8 @@
 package su.goodcat.spring.domain.docproject;
 
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -15,13 +14,15 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 @TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class)
 @Table(schema = "plan")
 public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     @Type(type = "postgresEnum") // объявление типа данных для базы
     @Enumerated(EnumType.STRING) // запись енама в базу по значению
