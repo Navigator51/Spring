@@ -1,7 +1,6 @@
 package su.goodcat.spring.domain.docproject;
 
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import su.goodcat.spring.domain.lerndomain.Gender;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -24,7 +33,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Table(schema = "plan")
-@TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class) // создание типа данных для базы
+// создание типа данных для базы
+@TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class)
 public class User implements UserDetails {
 
     @Id
@@ -43,8 +53,10 @@ public class User implements UserDetails {
     @Column(name = "born_date")
     private LocalDate bornDate;
 
-    @Type(type = "postgresEnum") // объявление типа данных для базы
-    @Enumerated(EnumType.STRING) // запись енама в базу по значению
+    // объявление типа данных для базы
+    @Type(type = "postgresEnum")
+    // запись енама в базу по значению
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private String about;
@@ -58,8 +70,10 @@ public class User implements UserDetails {
     private LocalDateTime modifyDateTime;
 
     @ManyToOne(fetch = FetchType.EAGER)
-     private Role role = Role.builder().id(1L).build();// запись в объект через builder
-
+    // запись в объект через builder
+    private Role role = Role.builder()
+            .id(1L)
+            .build();
 
     @Column(nullable = false, unique = true)
     private String login;
@@ -77,9 +91,10 @@ public class User implements UserDetails {
         return password;
     }
 
-    public void setPassword(String password) { // cпециальный сеттер для поля пароль,
+    // cпециальный сеттер для поля пароль
+    public void setPassword(String password) {
         // который запишет в базу пароль в зашифрованном виде
-       this.password =  new BCryptPasswordEncoder().encode(password);
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     @Override

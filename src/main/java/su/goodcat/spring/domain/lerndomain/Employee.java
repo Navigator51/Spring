@@ -27,13 +27,14 @@ public class Employee extends Human {
 
     private int salary;
 
-    @Transient // указывает, что это поле не вносится в базу данных
+    // указывает, что это поле не вносится в базу данных
+    @Transient
     private String temporary;
 
 //    @Id
 //    private int inn;
 //    @Id
 //    private int kpp;
-    // закоментированные поля - пример создания составного primary key
+    // закомментированные поля - пример создания составного primary key
 
 }

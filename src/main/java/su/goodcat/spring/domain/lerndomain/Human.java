@@ -33,5 +33,4 @@ public class Human {
     @UpdateTimestamp
     @Column(name = "last_modified_date_time")
     private LocalDateTime lastModifiedDate;
-
 }

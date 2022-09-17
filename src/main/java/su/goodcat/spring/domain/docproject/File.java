@@ -35,8 +35,10 @@ public class File {
     @Column(name = "modify_date")
     private LocalDateTime modifyDate;
 
-    @Type(type = "postgresEnum") // объявление типа данных для базы
-    @Enumerated(EnumType.STRING) // запись енама в базу по значению
+    // объявление типа данных для базы
+    @Type(type = "postgresEnum")
+    // запись енама в базу по значению
+    @Enumerated(EnumType.STRING)
     private FileType fileType;
 
 }

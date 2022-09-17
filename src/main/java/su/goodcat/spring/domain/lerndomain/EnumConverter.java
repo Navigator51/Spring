@@ -6,7 +6,6 @@ import javax.persistence.Converter;
 @Converter
 public class EnumConverter implements AttributeConverter<Gender, String> {
 
-
     @Override
     public String convertToDatabaseColumn(Gender attribute) {
         return "ENUM_" + attribute.name();

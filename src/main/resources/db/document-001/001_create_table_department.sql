@@ -7,5 +7,3 @@ create table if not exists plan.department
     name varchar(30) not null
 );
 
-alter table plan.department
-    owner to postgres;
