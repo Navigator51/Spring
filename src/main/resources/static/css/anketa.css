@@ -2,10 +2,10 @@ main{
     margin-top: 5%;
 }
 body{
-    background-color:#90EE90;
+    background-color: rgba(99, 193, 210, 0.91);
     height:100%;
 }
-.pass{
+.a{
     border-radius: 15px;
     border: darkred solid 2px;
 }

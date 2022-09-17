@@ -29,7 +29,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "");
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD");
     }
 
     @Bean
