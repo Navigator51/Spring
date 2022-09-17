@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      Анкета
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="../static/css/anketa.css" rel="stylesheet" th:href="@{css/anketa.css}">
+</head>
+<body>
+<main>
+<form class="entrance_form container" th:method="post" th:action="@{/login}">
+    <h1 class="h1 mb-3 fw-normal">
+        Пожалуйста, заполните сведения о себе.
+        <br>
+        Так нам будет удобнее работать вместе.
+    </h1>
+    <br>
+    <div class="form-floating row">
+        <input class="form-control a" name="surname" type="text" id="surname" placeholder="Фамилия" autofocus>
+        <label for="surname" class="sr-only">
+            Фамилия
+        </label>
+    </div>
+    <br>
+    <div class="form-floating row">
+        <input class="form-control a" name="name" type="text" id="name" placeholder="Имя" autofocus>
+        <label for="name" class="sr-only">
+            Имя
+        </label>
+    </div>
+    <br>
+    <div class="form-floating row">
+        <input class="form-control a" name="middle_name" type="text" id="middle_name" placeholder="Отчество" autofocus>
+        <label for="middle_name" class="sr-only">
+            Отчество
+        </label>
+    </div>
+    <br>
+    <h5 class="h5 mb-3 fw-normal">
+        Ваш пол. Пожалуйста, только один вариант :)
+    </h5>
+    <div class="checkbox">
+        <input type="checkbox" id="click">
+        <label for="click" class="text"> Мужской </label>
+    </div>
+    <br>
+    <div class="checkbox">
+        <input type="checkbox" id="click1">
+        <label for="click1" class="text"> Женский </label>
+    </div>
+    <br>
+    <div class="form-floating row">
+        <input class="form-control a" name="born_date" type="date" id="born_date" placeholder="Дата рождения" autofocus>
+        <label for="born_date" class="sr-only">
+            Дата рождения
+        </label>
+    </div>
+    <br>
+    <div class="form-floating row">
+        <input class="form-control a" name="about" type="text" id="about" placeholder="немного о себе" autofocus>
+        <label for="about" class="sr-only">
+            Немного о себе
+        </label>
+    </div>
+    <br>
+    <button class="w-30 btn btn-primary"  type="submit">
+        Отправить
+    </button>
+</form>
+</main>
+</body>
+</html>
