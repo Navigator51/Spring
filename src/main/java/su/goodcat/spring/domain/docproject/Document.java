@@ -32,7 +32,8 @@ public class Document {
     private User sender;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(schema = "plan", name = "document_recipient", joinColumns = @JoinColumn(name = "document_id"),
+    @JoinTable(schema = "plan", name = "document_recipient",
+            joinColumns = @JoinColumn(name = "document_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> recipients;
 
@@ -48,7 +49,9 @@ public class Document {
     @Column(name = "modify_date")
     private LocalDateTime modifyDate;
 
-    @Type(type = "postgresEnum") // объявление типа данных для базы
-    @Enumerated(EnumType.STRING) // запись енама в базу по значению
+    // объявление типа данных для базы
+    @Type(type = "postgresEnum")
+    // запись енама в базу по значению
+    @Enumerated(EnumType.STRING)
     private Status status;
 }

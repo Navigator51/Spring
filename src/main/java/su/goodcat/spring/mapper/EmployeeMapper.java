@@ -1,12 +1,13 @@
 package su.goodcat.spring.mapper;
 
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import su.goodcat.spring.config.MapstructConfig;
 import su.goodcat.spring.domain.lerndomain.Employee;
 import su.goodcat.spring.domain.lerndomain.EmployeeDTO;
 
-@Mapper(config = MapstructConfig.class)      // проверяем поля на null, если null, то не перекладываем
+@Mapper(config = MapstructConfig.class)
 public interface EmployeeMapper {
 
-        void fromDtoToEmployee(EmployeeDTO employeeDTO, @MappingTarget Employee a);
+    void fromDtoToEmployee(EmployeeDTO employeeDTO, @MappingTarget Employee a);
 }

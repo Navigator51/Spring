@@ -24,8 +24,8 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Type(type = "postgresEnum") // объявление типа данных для базы
-    @Enumerated(EnumType.STRING) // запись енама в базу по значению
+    @Type(type = "postgresEnum")
+    @Enumerated(EnumType.STRING)
     @Column(name = "role_name", nullable = false, unique = true)
     private EnumRole roleName;
 

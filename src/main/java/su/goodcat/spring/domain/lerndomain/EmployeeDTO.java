@@ -5,13 +5,11 @@ package su.goodcat.spring.domain.lerndomain;
 import lombok.Value;
 import java.time.LocalDate;
 
-@Value  // аннотация, содержащая в себе много других, и объявляющая все поля класса private final !!!
+// аннотация, содержащая в себе много других, и объявляющая все поля класса private final !!!
+@Value
 public class EmployeeDTO {
-
     LocalDate birthday;
     String bornPlace;
     String name;
     Long salary;
-
-
 }

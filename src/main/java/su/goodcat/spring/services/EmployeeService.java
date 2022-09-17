@@ -11,8 +11,8 @@ import su.goodcat.spring.domain.lerndomain.EmployeeDTO;
 import su.goodcat.spring.exceptions.EmployeeNotFoundException;
 import su.goodcat.spring.mapper.EmployeeMapper;
 import su.goodcat.spring.repositories.EmployeeRepository;
-import java.util.List;
 
+import java.util.List;
 
 @Service
 @Slf4j
@@ -20,14 +20,11 @@ public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-    @Autowired //внедрение через setter
+    //внедрение через setter
+    @Autowired
     public void setEmployeeRepository(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
-    //    @Autowired
-//    public EmployeeService(EmployeeRepository employeeRepository) {
-//        this.employeeRepository = employeeRepository;
-    //  }
 
     public List<Employee> getEmployeeListByName(String name) {
         return employeeRepository.getEmployeeByName(name);
@@ -40,19 +37,19 @@ public class EmployeeService {
 
     @Transactional
     public void updateEmployee(EmployeeDTO employee, Long id) {
-        Employee a = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id)); // eсли объекта с заданным id
-        // в базе не существует, выбрасываем исключение, прописанное в нашем классе исключений
-        Mappers.getMapper(EmployeeMapper.class).fromDtoToEmployee(employee, a); // перекладываем значения из DTO через маппер
-
+        // eсли объекта с заданным id в базе не существует, выбрасываем исключение, прописанное в нашем классе исключений
+        Employee a = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+        // перекладываем значения из DTO через маппер
+        Mappers.getMapper(EmployeeMapper.class).fromDtoToEmployee(employee, a);
     }
+
     @Transactional
     public void deleteEmployeeById(Long id) {
         try {
             employeeRepository.deleteById(id);
-        }catch (EmptyResultDataAccessException ex) {
+        } catch (EmptyResultDataAccessException ex) {
             log.error("Этого до тебя удалили!");
             throw new EmployeeNotFoundException(id);
         }
-
     }
 }

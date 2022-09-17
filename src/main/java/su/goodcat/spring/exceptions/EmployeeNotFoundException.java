@@ -1,6 +1,7 @@
 package su.goodcat.spring.exceptions;
 
 import lombok.RequiredArgsConstructor;
+import su.goodcat.spring.constants.ErrorMessagesConstants;
 
 @RequiredArgsConstructor
 public class EmployeeNotFoundException extends RuntimeException {
@@ -10,6 +11,6 @@ public class EmployeeNotFoundException extends RuntimeException {
     @Override
     public String getMessage() {
 
-        return String.format("Сотрудник с таким ID  %s  не найден, проверьте правильность ввода!", id);
+        return String.format(ErrorMessagesConstants.DELETE_EXISTED_USER_ERROR, id);
     }
 }

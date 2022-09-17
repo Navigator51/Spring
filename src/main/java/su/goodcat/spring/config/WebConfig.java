@@ -16,13 +16,15 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registry").setViewName("registry");
     }
-    @Bean //подключаем кодирование паролей
-    public PasswordEncoder doCrypting() {
+
+    //подключаем кодирование паролей
+    @Bean
+    public PasswordEncoder enableCrypting() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public HiddenHttpMethodFilter createPutchAndHead() {
+    public HiddenHttpMethodFilter enableHiddenMethodsForThymeleafForms() {
         return new HiddenHttpMethodFilter();
     }
 }
