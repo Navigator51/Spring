@@ -6,10 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -29,16 +26,14 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "HEAD");
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/js/**", "/css/**").permitAll()
-                .antMatchers("/main", "/registry", "/api/v1/registry/**").permitAll()
+        httpSecurity.cors();
+        return httpSecurity.authorizeRequests()
+                .antMatchers("/main", "/api/v1/**").permitAll() // доступность всем
                 .antMatchers("/admin/**", "/configuration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/full_access/**").access("hasAnyRole('ROLE_ADMIN','ROLE_SUPER_MEGA_GALAXY_ADMIN')")
                 .antMatchers("/").authenticated()
@@ -46,13 +41,6 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .and().formLogin().loginPage("/login").permitAll()
                 .successHandler(successLoginHandler)
                 .and().build();
-    }
-
-
-
-    @Bean
-    public WebSecurityCustomizer kakUgodno() {
-        return web -> web.ignoring().antMatchers("/css/**", "/*.html", "/js/**");
     }
 
     @Autowired

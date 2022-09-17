@@ -4,8 +4,8 @@ import org.mapstruct.*;
 
 @MapperConfig(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, unmappedTargetPolicy = ReportingPolicy.IGNORE)      // проверяем поля на null, если null, то не перекладываем
-
-public class MapstructConfig {
-
-}
+        componentModel = "spring",
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR,
+        // проверяем поля на null, если null, то не перекладываем
+        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public class MapstructConfig { }

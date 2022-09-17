@@ -8,5 +8,4 @@ import su.goodcat.spring.domain.docproject.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User getUserByLogin(String username);
-
 }

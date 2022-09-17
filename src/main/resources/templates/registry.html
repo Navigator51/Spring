@@ -9,7 +9,7 @@
 </head>
 <body>
 <main>
-    <form class="entrance_form container" th:method="post" th:action="@{/registry}">
+    <div class="entrance_form container">
         <h1 class="h1 mb-3 fw-normal">
             Пожалуйста, зарегистрируйтесь!
         </h1>
@@ -34,10 +34,11 @@
             </label>
         </div>
         <br>
-        <button class="w-30 btn btn-primary"  type="submit" onclick="piu()">
+        <input type="hidden" id="csrfToken" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <button class="w-30 btn btn-primary" onclick="piu()">
             Регистрация
         </button>
-    </form>
+    </div>
 </main>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="/static/js/registry-request.js" th:src="@{/js/registry-request.js}"> </script>

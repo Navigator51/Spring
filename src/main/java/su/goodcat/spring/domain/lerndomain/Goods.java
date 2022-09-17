@@ -25,5 +25,4 @@ public class Goods {
 
     @Column(length = 50)
     private String description;
-
 }
