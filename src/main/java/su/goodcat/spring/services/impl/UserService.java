@@ -1,4 +1,4 @@
-package su.goodcat.spring.services;
+package su.goodcat.spring.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;

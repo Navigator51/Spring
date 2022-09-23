@@ -1,4 +1,4 @@
-package su.goodcat.spring.services;
+package su.goodcat.spring.services.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;

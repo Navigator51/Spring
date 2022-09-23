@@ -1,12 +1,9 @@
 package su.goodcat.spring.domain.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import su.goodcat.spring.domain.docproject.FrontStatus;
 
-@Getter
-@RequiredArgsConstructor
-public class DocumentRequestDTO {
 
-    private final FrontStatus status;
+public record DocumentRequestDTO(FrontStatus status) {
+
 }

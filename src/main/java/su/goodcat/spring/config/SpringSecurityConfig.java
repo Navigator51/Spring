@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import su.goodcat.spring.services.UserDetailsServiceImpl;
+import su.goodcat.spring.services.impl.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +32,9 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
-        return httpSecurity.authorizeRequests()
+        return httpSecurity
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/main", "/api/v1/**").permitAll() // доступность всем
                 .antMatchers("/admin/**", "/configuration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/full_access/**").access("hasAnyRole('ROLE_ADMIN','ROLE_SUPER_MEGA_GALAXY_ADMIN')")

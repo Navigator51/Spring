@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import su.goodcat.spring.domain.lerndomain.Employee;
 import su.goodcat.spring.domain.lerndomain.EmployeeDTO;
-import su.goodcat.spring.services.EmployeeService;
+import su.goodcat.spring.services.impl.EmployeeService;
 import java.util.List;
 
 import static su.goodcat.spring.constants.DebugMessagesConstants.GET_EMPLOYEE_FINISH;
