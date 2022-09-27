@@ -23,9 +23,7 @@ public class DocumentServiceImpl implements DocumentService {
     public List<DocumentResponseDTO> getDocumentListByStatus(DocumentRequestDTO documentRequestDTO) {
         List<Status> statusList = documentRequestDTO.status().getStatusList();
         List<Document> documentList = documentRepository.getDocumentsByStatus(statusList);
-        return documentList.stream()
-                .map(document -> Mappers.getMapper(DocumentMapper.class).fromDocumentToDocumentResponseDTO(document))
-                .toList();
+        return Mappers.getMapper(DocumentMapper.class).fromDocumentToDocumentResponseDTO(documentList);
 
     }
 }

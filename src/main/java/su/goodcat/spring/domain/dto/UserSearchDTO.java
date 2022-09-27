@@ -9,5 +9,5 @@ public class UserSearchDTO {
 
     String name;
     String email;
-    long id;
+    long userId;
 }
