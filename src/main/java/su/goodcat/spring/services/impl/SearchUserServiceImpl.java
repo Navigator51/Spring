@@ -5,7 +5,6 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import su.goodcat.spring.domain.docproject.User;
 import su.goodcat.spring.domain.dto.UserSearchDTO;
-import su.goodcat.spring.mapper.DocumentMapper;
 import su.goodcat.spring.mapper.UserMapper;
 import su.goodcat.spring.repositories.UserRepository;
 import su.goodcat.spring.services.interfaces.SearchUserService;
@@ -21,5 +20,9 @@ public class SearchUserServiceImpl implements SearchUserService {
     public List<UserSearchDTO> getUserByQuery(String query) {
         List<User> userList = userRepository.getDistinctByNameOrEmail(query, query);
         return Mappers.getMapper(UserMapper.class).fromUserToUserSearchDTO(userList);
+    }
+
+    public long squareNumber(int a){
+        return (long) a * a;
     }
 }

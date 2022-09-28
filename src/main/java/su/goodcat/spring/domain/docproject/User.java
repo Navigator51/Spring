@@ -1,9 +1,7 @@
 package su.goodcat.spring.domain.docproject;
 
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -34,6 +32,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(schema = "plan")
 // создание типа данных для базы
 @TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class)
