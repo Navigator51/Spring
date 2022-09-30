@@ -15,6 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registry").setViewName("registry");
+        registry.addViewController("/main").setViewName("main");
+
     }
 
     //подключаем кодирование паролей

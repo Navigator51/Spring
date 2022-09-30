@@ -60,4 +60,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         <sqlFile path="document-005/001-add_email_and_phone_for_user.sql" relativeToChangelogFile="true"/>
         <rollback/>
     </changeSet>
+    <changeSet id="14" author="e.markov">
+        <sqlFile path="document-006/001-create_invitation_table.sql" relativeToChangelogFile="true"/>
+        <rollback/>
+    </changeSet>
 </databaseChangeLog>

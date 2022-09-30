@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import su.goodcat.spring.exceptions.EmployeeNotFoundException;
+import su.goodcat.spring.exceptions.HimselfInvitationException;
 
 import javax.validation.ValidationException;
 
@@ -19,9 +20,16 @@ public class ControllerExceptionHandler {
     public HttpEntity<String> employeeNotFound(EmployeeNotFoundException a) {
         return new HttpEntity<>(a.getMessage());
     }
+
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public HttpEntity<String> badFormat(ValidationException a) {
         return new HttpEntity<>(BAD_VALUES_FORMAT_ERROR + a.getMessage());
+    }
+
+    @ExceptionHandler(HimselfInvitationException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public HttpEntity<String> badInvitation(HimselfInvitationException a) {
+        return new HttpEntity<>(a.getMessage());
     }
 }
