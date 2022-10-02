@@ -1,7 +1,6 @@
 package su.goodcat.spring.domain.docproject;
 
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
-import jdk.jfr.Timestamp;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,7 @@ public class Invitation {
     private Long senderId;
 
     @Column(name = "recipient_id", nullable = false)
-    private Long recipient_id;
+    private Long recipientId;
 
     @Type(type = "postgresEnum")
     @Enumerated(EnumType.STRING)

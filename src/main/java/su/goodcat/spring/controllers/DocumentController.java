@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(
         name = "document-controller",
-        description = "Контроллер для работы документами"
+        description = "Контроллер для работы с документами"
 )
 public class DocumentController {
 
