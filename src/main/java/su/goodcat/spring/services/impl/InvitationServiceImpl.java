@@ -14,6 +14,7 @@ import su.goodcat.spring.repositories.UserRepository;
 import su.goodcat.spring.services.interfaces.InvitationService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -41,16 +42,15 @@ public class InvitationServiceImpl implements InvitationService {
                 .map(Invitation::getSenderId)
                 .distinct()
                 .toList();
+
         List<User> userList = userRepository.findAllById(listSenderId);
-        // TODO сделать супермегаоптимальный алгоритм через toMap и HashMap
-        return invitationList.stream()
-                .map(invitation -> mapper.fromUserToUserInvitatorDTO(
-                        userList.stream()
-                                .filter(user -> user.getUserId() == invitation.getSenderId())
-                                .findFirst()
-                                .orElseThrow(),
-                        invitation
-                ))
-                .collect(Collectors.toList());
+
+        Map<Long, Invitation> invitationMap = invitationList.stream()
+                .collect(Collectors.toMap(Invitation::getSenderId, inv -> inv));
+
+        return userList.stream()
+                .map(user -> mapper.fromUserToUserInvitatorDTO(user, invitationMap.get(user.getId())))
+                .toList();
+
     }
 }

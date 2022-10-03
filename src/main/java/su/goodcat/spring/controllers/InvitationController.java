@@ -1,5 +1,6 @@
 package su.goodcat.spring.controllers;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,14 +25,14 @@ public class InvitationController {
 
     @PutMapping(path = "/api/v1/user/{recipientId}/invitation")
     public ResponseEntity<Void> sendInvitation(@PathVariable Long recipientId, @AuthenticationPrincipal UserDetails userDetails) {
-        Long senderId = userRepository.getUserByLogin(userDetails.getUsername()).getUserId();
+        Long senderId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
         invitationService.putInvitation(senderId, recipientId, InvitationStatus.SENT);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping(path ="/api/v1/user/invitation")
-    public ResponseEntity<List<UserInvitatorDTO>> getInvitationsForCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
-        Long userId = userRepository.getUserByLogin(userDetails.getUsername()).getUserId();
+    public ResponseEntity<List<UserInvitatorDTO>> getInvitationsForCurrentUser(@Parameter(hidden = true)@AuthenticationPrincipal UserDetails userDetails) {
+        Long userId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
         return ResponseEntity.ok(invitationService.getInvitationsByUserId(userId));
     }
 }

@@ -13,6 +13,7 @@ public interface UserInvitatorMapper {
     @Mapping(source = "user.name", target = "senderName")
     @Mapping(source = "user.middleName", target = "senderMiddleName")
     @Mapping(source = "user.surname", target = "senderSurname")
+    @Mapping(source = "user.id", target = "senderId")
     @Mapping(source = "invitation.creationDate", target = "invitationCreationDate")
     UserInvitatorDTO fromUserToUserInvitatorDTO(User user, Invitation invitation);
 }

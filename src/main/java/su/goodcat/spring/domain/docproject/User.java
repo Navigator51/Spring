@@ -33,6 +33,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Table(schema = "plan")
 // создание типа данных для базы
 @TypeDef(name = "postgresEnum", typeClass = PostgreSQLEnumType.class)
@@ -41,7 +42,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long userId;
+    private long id;
 
     @Column(nullable = false)
     private String name;
