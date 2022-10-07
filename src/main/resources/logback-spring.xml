@@ -1,0 +1,39 @@
+<configuration>
+    <springProperty scope="context"
+                    name="appender"
+                    source="logging.appender"
+                    defaultValue="stdout"/>
+    <springProperty scope="context"
+                    name="root.level"
+                    source="logging.root.level"
+                    defaultValue="INFO"/>
+    <springProperty scope="context"
+                    name="log.file.path"
+                    source="logging.file.path"
+                    defaultValue="log"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <if condition='java.util.Arrays.asList(property("appender").split(",")).contains("stdout")'>
+        <then>
+            <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %level %clr([%X{X-B3-TraceId:-}]) %clr([%X{X-B3-SpanId:-}]) %clr([%X{X-USER-ID:-}]) %clr([%X{X-PROFILE-ID:-}]) %clr([%X{X-COUNTERPARTY-ID:-}]) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%13.-13t]){faint} %clr(%-30.30logger{30}){cyan} %clr(:){faint} %m%n%wEx
+                    </pattern>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+    <logger name="su.goodcat" level="DEBUG"/>
+    <root level="${root.level}">
+        <if condition='java.util.Arrays.asList(property("appender").split(",")).contains("stdout")'>
+            <then>
+                <appender-ref ref="stdout"/>
+            </then>
+        </if>
+    </root>
+
+</configuration>

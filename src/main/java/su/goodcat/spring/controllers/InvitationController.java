@@ -2,6 +2,7 @@ package su.goodcat.spring.controllers;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +17,11 @@ import su.goodcat.spring.services.interfaces.InvitationService;
 
 import java.util.List;
 
+import static su.goodcat.spring.constants.DebugMessagesConstants.*;
+
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class InvitationController {
 
     private final InvitationService invitationService;
@@ -25,14 +29,19 @@ public class InvitationController {
 
     @PutMapping(path = "/api/v1/user/{recipientId}/invitation")
     public ResponseEntity<Void> sendInvitation(@PathVariable Long recipientId, @AuthenticationPrincipal UserDetails userDetails) {
+        log.debug(SAVE_INVITATION_START);
         Long senderId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
         invitationService.putInvitation(senderId, recipientId, InvitationStatus.SENT);
+        log.debug(SAVE_INVITATION_FINISH);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping(path ="/api/v1/user/invitation")
     public ResponseEntity<List<UserInvitatorDTO>> getInvitationsForCurrentUser(@Parameter(hidden = true)@AuthenticationPrincipal UserDetails userDetails) {
+        log.debug(GET_INVITATION_LIST_START);
         Long userId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
-        return ResponseEntity.ok(invitationService.getInvitationsByUserId(userId));
+        List<UserInvitatorDTO> result = invitationService.getInvitationsByUserId(userId);
+        log.debug(GET_INVITATION_LIST_FINISH);
+        return ResponseEntity.ok(result);
     }
 }

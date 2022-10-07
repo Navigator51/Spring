@@ -38,6 +38,8 @@ public class InvitationServiceImpl implements InvitationService {
     public List<UserInvitatorDTO> getInvitationsByUserId(Long userId) {
         UserInvitatorMapper mapper = Mappers.getMapper(UserInvitatorMapper.class);
         List<Invitation> invitationList = invitationRepository.getInvitationsByRecipientIdAndStatus(userId, InvitationStatus.SENT);
+
+        // Достаём из списка приглашений список id юзеров, отправивших эти приглашения
         List<Long> listSenderId = invitationList.stream()
                 .map(Invitation::getSenderId)
                 .distinct()
@@ -45,9 +47,11 @@ public class InvitationServiceImpl implements InvitationService {
 
         List<User> userList = userRepository.findAllById(listSenderId);
 
+        // Сосздаём мапу для сохранения связки id отправителя приглашения и приглашения
         Map<Long, Invitation> invitationMap = invitationList.stream()
                 .collect(Collectors.toMap(Invitation::getSenderId, inv -> inv));
 
+        // Мапим в сприсок ДТО для отправки на фронт
         return userList.stream()
                 .map(user -> mapper.fromUserToUserInvitatorDTO(user, invitationMap.get(user.getId())))
                 .toList();
