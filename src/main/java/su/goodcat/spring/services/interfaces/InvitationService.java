@@ -1,7 +1,7 @@
 package su.goodcat.spring.services.interfaces;
 
+import su.goodcat.commonlib.domain.UserInvitatorDTO;
 import su.goodcat.spring.domain.docproject.InvitationStatus;
-import su.goodcat.spring.domain.dto.UserInvitatorDTO;
 
 import java.util.List;
 

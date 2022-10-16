@@ -1,1 +1,3 @@
 rootProject.name = 'Spring'
+include ':Common-Lib'
+project(':Common-Lib').projectDir = new File('../Common-Lib')

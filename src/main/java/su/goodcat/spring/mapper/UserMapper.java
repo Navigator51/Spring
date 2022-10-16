@@ -2,10 +2,10 @@ package su.goodcat.spring.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import su.goodcat.commonlib.domain.UserDTO;
+import su.goodcat.commonlib.domain.UserSearchDTO;
 import su.goodcat.spring.config.MapstructConfig;
 import su.goodcat.spring.domain.docproject.User;
-import su.goodcat.spring.domain.dto.UserDTO;
-import su.goodcat.spring.domain.dto.UserSearchDTO;
 
 import java.util.List;
 

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import su.goodcat.commonlib.domain.UserInvitatorDTO;
 import su.goodcat.spring.domain.docproject.InvitationStatus;
-import su.goodcat.spring.domain.dto.UserInvitatorDTO;
 import su.goodcat.spring.repositories.UserRepository;
 import su.goodcat.spring.services.interfaces.InvitationService;
 

@@ -2,21 +2,17 @@ package su.goodcat.spring.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import su.goodcat.commonlib.domain.UserSearchDTO;
 import su.goodcat.spring.domain.docproject.Role;
 import su.goodcat.spring.domain.docproject.User;
-import su.goodcat.spring.domain.dto.UserSearchDTO;
 import su.goodcat.spring.domain.lerndomain.Gender;
 import su.goodcat.spring.repositories.UserRepository;
 import su.goodcat.spring.services.impl.SearchUserServiceImpl;
 
 import java.util.List;
-
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.when;

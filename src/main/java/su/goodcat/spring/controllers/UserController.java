@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import su.goodcat.commonlib.domain.UserDTO;
 import su.goodcat.spring.constants.DebugMessagesConstants;
-import su.goodcat.spring.domain.dto.UserDTO;
 import su.goodcat.spring.services.impl.UserService;
 
 @RestController

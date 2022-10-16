@@ -2,10 +2,10 @@ package su.goodcat.spring.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import su.goodcat.commonlib.domain.UserInvitatorDTO;
 import su.goodcat.spring.config.MapstructConfig;
 import su.goodcat.spring.domain.docproject.Invitation;
 import su.goodcat.spring.domain.docproject.User;
-import su.goodcat.spring.domain.dto.UserInvitatorDTO;
 
 @Mapper(config = MapstructConfig.class)
 public interface UserInvitatorMapper {
