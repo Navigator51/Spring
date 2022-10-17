@@ -10,4 +10,5 @@ public interface InvitationRepository extends JpaRepository<Invitation, Long> {
 
     List<Invitation> getInvitationsByRecipientIdAndStatus(Long recipientID, InvitationStatus status);
 
+    Invitation getInvitationBySenderIdAndRecipientId(Long senderId, Long recipientId);
 }

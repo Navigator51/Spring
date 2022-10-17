@@ -26,4 +26,6 @@ public interface InvitationService {
      * @return список DTO пользователей, отправивших приглашения
      */
     List<UserInvitatorDTO> getInvitationsByUserId(Long userId);
+
+    void changeInvitationStatus(Long senderId, Long recipientId, String status);
 }

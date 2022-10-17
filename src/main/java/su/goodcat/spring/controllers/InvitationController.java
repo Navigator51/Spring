@@ -6,10 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import su.goodcat.commonlib.domain.UserInvitatorDTO;
 import su.goodcat.spring.domain.docproject.InvitationStatus;
 import su.goodcat.spring.repositories.UserRepository;
@@ -44,4 +41,13 @@ public class InvitationController {
         log.debug(GET_INVITATION_LIST_FINISH);
         return ResponseEntity.ok(result);
     }
+
+    @PutMapping(path = "/api/v1/user/{senderId}/invitation/{status}")
+    public ResponseEntity<Void> changeInvitationStatus(@PathVariable Long senderId, @AuthenticationPrincipal UserDetails userDetails, @PathVariable String status) {
+        Long recipientId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
+        invitationService.changeInvitationStatus(senderId, recipientId, status);
+        return ResponseEntity.ok().build();
+    }
+
+
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import su.goodcat.spring.exceptions.BadStatusException;
 import su.goodcat.spring.exceptions.EmployeeNotFoundException;
 import su.goodcat.spring.exceptions.HimselfInvitationException;
 
@@ -27,9 +28,10 @@ public class ControllerExceptionHandler {
         return new HttpEntity<>(BAD_VALUES_FORMAT_ERROR + a.getMessage());
     }
 
-    @ExceptionHandler(HimselfInvitationException.class)
+    @ExceptionHandler({HimselfInvitationException.class, BadStatusException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public HttpEntity<String> badInvitation(HimselfInvitationException a) {
+    public HttpEntity<String> badInvitation(Exception a) {
         return new HttpEntity<>(a.getMessage());
     }
+
 }

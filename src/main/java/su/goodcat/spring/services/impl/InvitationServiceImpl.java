@@ -3,10 +3,12 @@ package su.goodcat.spring.services.impl;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import su.goodcat.commonlib.domain.UserInvitatorDTO;
 import su.goodcat.spring.domain.docproject.Invitation;
 import su.goodcat.spring.domain.docproject.InvitationStatus;
 import su.goodcat.spring.domain.docproject.User;
+import su.goodcat.spring.exceptions.BadStatusException;
 import su.goodcat.spring.exceptions.HimselfInvitationException;
 import su.goodcat.spring.mapper.UserInvitatorMapper;
 import su.goodcat.spring.repositories.InvitationRepository;
@@ -56,5 +58,17 @@ public class InvitationServiceImpl implements InvitationService {
                 .map(user -> mapper.fromUserToUserInvitatorDTO(user, invitationMap.get(user.getId())))
                 .toList();
 
+    }
+
+    @Override
+    @Transactional
+    public void changeInvitationStatus(Long senderId, Long recipientId, String status) {
+        try {
+            InvitationStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException badStatus) {
+            throw new BadStatusException();
+        }
+       Invitation invitation = invitationRepository.getInvitationBySenderIdAndRecipientId(senderId, recipientId);
+       invitation.setStatus(InvitationStatus.valueOf(status.toUpperCase()));
     }
 }
