@@ -34,7 +34,8 @@ public class InvitationController {
     }
 
     @GetMapping(path ="/api/v1/user/invitation")
-    public ResponseEntity<List<UserInvitatorDTO>> getInvitationsForCurrentUser(@Parameter(hidden = true)@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<List<UserInvitatorDTO>> getInvitationsForCurrentUser(@Parameter(hidden = true)
+                                                                                   @AuthenticationPrincipal UserDetails userDetails) {
         log.debug(GET_INVITATION_LIST_START);
         Long userId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
         List<UserInvitatorDTO> result = invitationService.getInvitationsByUserId(userId);
@@ -43,7 +44,9 @@ public class InvitationController {
     }
 
     @PutMapping(path = "/api/v1/user/{senderId}/invitation/{status}")
-    public ResponseEntity<Void> changeInvitationStatus(@PathVariable Long senderId, @AuthenticationPrincipal UserDetails userDetails, @PathVariable String status) {
+    public ResponseEntity<Void> changeInvitationStatus(@PathVariable Long senderId,
+                                                       @AuthenticationPrincipal UserDetails userDetails,
+                                                       @PathVariable String status) {
         Long recipientId = userRepository.getUserByLogin(userDetails.getUsername()).getId();
         invitationService.changeInvitationStatus(senderId, recipientId, status);
         return ResponseEntity.ok().build();
